@@ -37,5 +37,14 @@ def quantize_model():
     print(f"Original Model R² Score: {r2_original:.4f}")
     print(f"Quantized Model R² Score: {r2_quantized:.4f}")
 
+    original_size = os.path.getsize("artifacts/model.joblib") / 1024
+    quantized_size = os.path.getsize("artifacts/quant_params.joblib") / 1024
+
+    print("\n Model Comparison Table:")
+    print("| Metric        | Original Model | Quantized Model |")
+    print("|--------------|---------------|-----------------|")
+    print(f"| **R² Score** | {r2_original:.4f}        | {r2_quantized:.4f}         |")
+    print(f"| **Model Size** | {original_size:.2f} KB      | {quantized_size:.2f} KB          |")
+
 if __name__ == "__main__":
     quantize_model()
